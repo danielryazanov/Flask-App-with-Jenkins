@@ -5,18 +5,16 @@ pipeline {
     stage('Checkout') {
       steps {
         checkout scm
-        sh 'ls -la'
       }
     }
 
-    stage('Build Docker Image') {
+    stage('Build Image') {
       steps {
-        sh 'docker --version'
         sh 'docker build -t flask-hello:latest .'
       }
     }
 
-    stage('Run Container') {
+    stage('Deploy') {
       steps {
         sh '''
           docker rm -f flask-hello || true
@@ -27,4 +25,3 @@ pipeline {
     }
   }
 }
-
