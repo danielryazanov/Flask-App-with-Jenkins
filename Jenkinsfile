@@ -20,10 +20,11 @@ pipeline {
       steps {
         sh '''
           docker rm -f flask-hello || true
-          docker run -d --name flask-hello -p 8080:8080 flask-hello:latest
+          docker run -d --name flask-hello -p 8082:5000 flask-hello:latest
           docker ps --filter "name=flask-hello"
         '''
       }
     }
   }
 }
+
